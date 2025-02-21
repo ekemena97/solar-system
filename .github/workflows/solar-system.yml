@@ -18,6 +18,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Set environment variables
+        run: echo "MONGO_URI=${{ secrets.MONGO_URI || 'mongodb://user:password@localhost:27017/testdb' }}" >> $GITHUB_ENV
+
 
       - name: Install Dependencies
         run: npm install
